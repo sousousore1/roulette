@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1AA61A16-C44E-4F46-8FD1-10942895024A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ED3972A9-3E8C-4272-930D-54C91D22F3A1}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Roulette", "src\Roulette\Roulette.xproj", "{519E5CBE-BEF6-46CA-821F-C58B93BF7FB6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{519E5CBE-BEF6-46CA-821F-C58B93BF7FB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{519E5CBE-BEF6-46CA-821F-C58B93BF7FB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{519E5CBE-BEF6-46CA-821F-C58B93BF7FB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{519E5CBE-BEF6-46CA-821F-C58B93BF7FB6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{519E5CBE-BEF6-46CA-821F-C58B93BF7FB6} = {1AA61A16-C44E-4F46-8FD1-10942895024A}
+	EndGlobalSection
+EndGlobal
