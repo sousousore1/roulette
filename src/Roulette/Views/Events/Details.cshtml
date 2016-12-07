@@ -1,0 +1,72 @@
+﻿@model Roulette.Models.Event
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+@section styles {
+    <link rel="stylesheet" href="~/css/events.css" />
+}
+
+<h4>@Model.Name</h4>
+<hr />
+
+<section>
+    <div class="text-center">
+        <p id="tooltip" data-toggle="tooltip" title="@(string.Join(Environment.NewLine, Model.UserEvents.Select(x => x.User.UserName)))">参加者<span id="userNum">@(Model.UserEvents.Count)</span>人</p>
+        <button id="joinButton" class="btn btn-circle" value="@Model.Id">
+            <i class="fa fa-users"></i>
+            <span>参加</span>
+        </button>
+    </div>
+    
+    <div class="roulette" style="display: none;">
+        @foreach (var userEvent in @Model.UserEvents.OrderByDescending(x => Model.Winner != null && x.User.Id == Model.Winner.Id))
+        {
+            <span gravatar-email="@userEvent.User.Email" image-size="200"></span>
+        }
+    </div>
+    <div class="top-buffer">
+        <p class="text-center">
+            <span id="resultEmail">
+                @(Model.Winner == null ? string.Empty : $"{Model.Winner.Email}")
+            </span>
+            <span id="resultSuffix">
+                @(Model.Winner == null ? string.Empty : "さんに決まりました")
+            </span>
+        </p>
+    </div>
+    @if (Model.Winner == null)
+    {
+        if (Model.Creator.UserName == User.Identity.Name)
+        {
+            <div class="top-buffer">
+                <div class="row text-center">
+                    <button id="startButton" class="btn btn-large btn-success btn-round"> START </button>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="top-buffer">
+                <div class="row text-center">
+                    <p>
+                        @(Model.Creator.UserName)さんが実行するまでお待ちください
+                    </p>
+                </div>
+            </div>
+        }
+    }
+</section>
+<section>
+    <a asp-action="Index">Back to List</a>
+</section>
+
+<input type="hidden" id="event" value="@Model.Id" />
+
+@section scripts {
+    <script src="//ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.3.js"></script>
+    <script src="~/js/roulette.js"></script>
+    <script src="~/signalr/js"></script>
+    <script src="~/js/event_details.js"></script>
+}

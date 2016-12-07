@@ -1,0 +1,74 @@
+﻿@model Roulette.Models.EventViewModels.IndexViewModel
+
+@section styles{
+    <link rel="stylesheet" href="~/css/events.css"/>
+}
+
+<a class="btn btn-circle" asp-action="Create">
+    <i class="fa fa-plus-circle"></i>
+    <span>Create</span>
+</a>
+
+<ul class="timeline">
+    @foreach (var item in Model.Events)
+    {
+        <li @(item.IsCreated ? string.Empty : "class=timeline-inverted")>
+            @if (item.Event.Winner == null)
+            {
+                <div class="timeline-badge"></div>
+            }
+            else
+            {
+                <div class="timeline-badge info">
+                    <i class="glyphicon glyphicon-check"></i>
+                </div>
+            }
+            <div class="timeline-panel">
+                @if (item.IsCreated)
+                {
+                    <a asp-action="Delete" asp-route-id="@item.Event.Id">
+                        <i class="fa fa-remove close"></i>
+                    </a>
+                }
+                <div class="timeline-heading">
+                    <h4 class="timeline-title">
+                        <a class="bottom-right btn-block" asp-action="Details" asp-route-id="@item.Event.Id">
+                            @item.Event.Name
+                        </a>
+                    </h4>
+                    <p>
+                        <small class="text-muted">
+                            <i class="glyphicon glyphicon-time"></i> @item.Event.Created
+                        </small>
+                    </p>
+                </div>
+                <div class="timeline-body">
+                    <p>
+                        <span>参加人数</span>
+                        <span>@(item.Event.UserEvents.Count())人</span>
+                    </p>
+                    @if (!item.IsCreated)
+                    {
+                        <p>
+                            <span>作者</span>
+                            <span>@(item.Event.Creator.UserName)</span>
+                        </p>
+                    }
+                    @if (item.Event.Winner != null)
+                    {
+                        <p>
+                            <span>結果</span>
+                            <span>@(item.Event.Winner.UserName)</span>
+                        </p>
+                    }
+                    @if (item.IsCreated)
+                    {
+                        <p>
+                            <a asp-action="Edit" asp-route-id="@item.Event.Id">Edit</a>
+                        </p>
+                    }
+                </div>
+            </div>
+        </li>
+    }
+</ul>

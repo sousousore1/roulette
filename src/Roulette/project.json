@@ -1,4 +1,4 @@
-﻿{
+{
   "userSecretsId": "aspnet-Roulette-c4f906fa-7e90-400c-b457-4518470c63d2",
 
   "dependencies": {
@@ -42,7 +42,11 @@
     "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
       "version": "1.0.0-preview2-final",
       "type": "build"
-    }
+    },
+    "Microsoft.AspNetCore.SignalR.Server": "0.2.0-*",
+    "Microsoft.AspNetCore.WebSockets": "0.2.0-*",
+    "jquery.TypeScript.DefinitelyTyped": "3.1.2",
+    "Microsoft.AspNetCore.Authentication.Google": "1.0.0",
   },
 
   "tools": {

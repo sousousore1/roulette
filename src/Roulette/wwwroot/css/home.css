@@ -1,0 +1,30 @@
+﻿.logo {
+    width: 200px;    
+}
+.signin {
+    color: white;
+    display: block;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    font-size: 10px;
+    text-align: center;
+    border: none;
+    margin-left: 10px;
+    margin: 0 auto 30px;
+    float: none;
+    background: #5790cc;
+}
+
+.signin i {
+    display: block;
+    font-size: 30px;
+    position: relative;
+    top: 5px;
+    line-height: 35px;
+}
+
+.signin span {
+    position: relative;
+    top: 2px;
+}

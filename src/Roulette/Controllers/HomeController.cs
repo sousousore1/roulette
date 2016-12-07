@@ -2,14 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Roulette.Models;
 
 namespace Roulette.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly SignInManager<ApplicationUser> _signInManager;
+
+        public HomeController(SignInManager<ApplicationUser> signInManager)
         {
+            _signInManager = signInManager;
+        }
+
+        public IActionResult Index(string returnUrl)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            if (_signInManager.IsSignedIn(User))
+                return RedirectToAction("Index", "Events");    
             return View();
         }
 
